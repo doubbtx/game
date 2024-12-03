@@ -2,11 +2,11 @@
   "name": "react-project",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/doubbtx/game",
+  "homepage": "https://doubbtx.github.io/game/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
