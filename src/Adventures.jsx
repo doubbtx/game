@@ -39,7 +39,6 @@ function Adventures({
     }
     setPlayerDamage(damage);
     setRandomDamageFactor(randomFactor);
-
     setMinDamage(Math.floor(damage * 0.8));
     setMaxDamage(Math.ceil(damage * 1.2));
   }, [userClass, userStats, level]);
@@ -122,12 +121,12 @@ function Adventures({
   function buyStamina() {
     if (gold >= staminaPrice && licznik < 20 && stamina < 100) {
       setStamina((prevStamina) => {
-        const newStamina = prevStamina + 10;
-        return newStamina > 100 ? 100 : newStamina;
+        prevStamina + 10;
+        return prevStamina > 100 ? 100 : prevStamina;
       });
       setGold((prevGold) => prevGold - staminaPrice);
       setLicznik((prevLicznik) => prevLicznik + 1);
-    } else if (licznik >= 6) {
+    } else if (licznik >= 20) {
       alert("You cannot buy more stamina today!");
     } else if (gold < staminaPrice) {
       alert("Not enough gold!");
@@ -145,9 +144,9 @@ function Adventures({
           <p>Stamina purchases: {licznik}</p>
           <button onClick={buyStamina}>Buy 10 stamina</button>
           <br />
-          <button onClick={() => handleMission(0.1, 300, 2)}>2-min Mission</button>
-          <button onClick={() => handleMission(0.25, 700, 5)}>5-min Mission</button>
-          <button onClick={() => handleMission(0.33, 1000, 10)}>10-min Mission</button>
+          <button onClick={() => handleMission(0.1, 300, 2)}>2 stamina Mission</button>
+          <button onClick={() => handleMission(0.25, 700, 5)}>5 stamina Mission</button>
+          <button onClick={() => handleMission(0.33, 1000, 10)}>10 stamina Mission</button>
         </div>
       )}
       {isBattling && currentEnemy && (
