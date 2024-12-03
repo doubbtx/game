@@ -159,10 +159,10 @@ function levelUp () {
   return (
     <>
       {!startGame && (
-        <>
+        <div className="startingPoint">
         {isUserName && (
           <>
-          <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
+          <input type="text" value={userName} placeholder="Your nickname" onChange={(e) => setUserName(e.target.value)}/>
           <button onClick={() => setIsUsername(false)}>Submit</button>
           </>
         )}
@@ -185,7 +185,7 @@ function levelUp () {
           )}
           </>
         )}
-        </>
+        </div>
       )}
           {startGame &&(
         <div>
