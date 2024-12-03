@@ -13,8 +13,11 @@ function App() {
   const [currentExp, setCurrentExp] = useState(1);
   const [reqExp, setReqExp] = useState(100);
   const [level, setLevel] = useState(1);
-  const [gold, setGold] = useState(1000)
+  const [gold, setGold] = useState(0)
+  const [stamina, setStamina] = useState(100);
   const [activeView, setActiveView] = useState(null);
+  const [counter, setCounter] = useState(0);
+  const [inventoryItems, setInventoryItems] = useState([]);
   const [userItems, setUserItems] = useState({
     Weapon: null,
     Helmet: null,
@@ -222,6 +225,10 @@ function levelUp () {
     setUserStats={setUserStats}
     userClass={userClass}
     setUserClass={setUserClass}
+    stamina={stamina}
+    setStamina={setStamina}
+    counter={counter}
+    setCounter={setCounter}
   />
 )}
 {activeView === "Character" && (
@@ -250,6 +257,9 @@ function levelUp () {
     setItems={setItems}
     userItems={userItems}
     setUserItems={setUserItems}
+    inventoryItems={inventoryItems}
+    setInventoryItems={setInventoryItems}
+    userClass={userClass}
   />
 )}
 {activeView === "Inventory" && (
@@ -261,6 +271,10 @@ function levelUp () {
     userStats={userStats}
     setUserStats={setUserStats}
     userClass={userClass}
+    inventoryItems={inventoryItems}
+    setInventoryItems={setInventoryItems}
+    setGold={setGold}
+    gold={gold}
   />
 )}
 </div>

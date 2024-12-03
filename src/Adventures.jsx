@@ -11,11 +11,13 @@ function Adventures({
   userStats, 
   setUserStats, 
   userClass, 
-  level, 
+  level,
+  stamina,
+  setStamina,
+  counter,
+  setCounter
 }) {
-  const [stamina, setStamina] = useState(100);
   const staminaPrice = 10;
-  const [licznik, setLicznik] = useState(0);
   const [currentEnemy, setCurrentEnemy] = useState(null); 
   const [isBattling, setIsBattling] = useState(false); 
   const [playerHealth, setPlayerHealth] = useState(userStats.health); 
@@ -61,7 +63,7 @@ function Adventures({
 
   const criticalHitChance = () => {
     const chance = Math.random();
-    if (userStats.dexterity > 10 && chance < 0.2) {
+    if (userStats.luck > 10 && chance < 0.2) {
       return 2;
     }
     return 1;
@@ -119,14 +121,14 @@ function Adventures({
   };
 
   function buyStamina() {
-    if (gold >= staminaPrice && licznik < 20 && stamina < 100) {
+    if (gold >= staminaPrice && counter < 20 && stamina < 100) {
       setStamina((prevStamina) => {
-        prevStamina + 10;
-        return prevStamina > 100 ? 100 : prevStamina;
+      const newStamina = prevStamina + 10;
+        return newStamina > 100 ? 100 : newStamina;
       });
       setGold((prevGold) => prevGold - staminaPrice);
-      setLicznik((prevLicznik) => prevLicznik + 1);
-    } else if (licznik >= 20) {
+      setCounter((prevCounter) => prevCounter + 1);
+    } else if (counter >= 20) {
       alert("You cannot buy more stamina today!");
     } else if (gold < staminaPrice) {
       alert("Not enough gold!");
@@ -141,7 +143,7 @@ function Adventures({
         <div className="adventures">
           <h1>Choose mission:</h1>
           <p>Current stamina: {stamina}</p>
-          <p>Stamina purchases: {licznik}</p>
+          <p>Stamina purchases: {counter}</p>
           <button onClick={buyStamina}>Buy 10 stamina</button>
           <br />
           <button onClick={() => handleMission(0.1, 300, 2)}>2 stamina Mission</button>
